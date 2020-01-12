@@ -22,7 +22,7 @@ describe("Define routes and meta", () => {
     name: 'Post',
     description: 'Post a comment',
     stacks: 'Comments'
-  }, function aboutToDo(req, res) {
+  }, function postToDo(req, res) {
     res.json(req.routeMeta)
   });
 
