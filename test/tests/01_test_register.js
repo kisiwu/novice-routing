@@ -12,7 +12,7 @@ describe("Define routes and meta", () => {
   router.get({
     path: '/about',
     name: 'about',
-    stacks: ['About']
+    tags: ['About']
   }, function aboutToDo(req, res) {
     res.json(req.routeMeta)
   });
@@ -21,7 +21,7 @@ describe("Define routes and meta", () => {
     path: '/post',
     name: 'Post',
     description: 'Post a comment',
-    stacks: 'Comments'
+    tags: 'Comments'
   }, function postToDo(req, res) {
     res.json(req.routeMeta)
   });
@@ -40,16 +40,16 @@ describe("Define routes and meta", () => {
 
   it("should have registered 'get' meta", function() {
     expect(router.stack[1].route.meta.name).to.equal('about');
-    expect(router.stack[1].route.meta.stacks)
-      .to.be.an('array', 'meta.stacks in not an array')
+    expect(router.stack[1].route.meta.tags)
+      .to.be.an('array', 'meta.tags in not an array')
       .to.eql(['About']);
   });
 
   it("should have registered 'post' meta", function() {
     expect(router.stack[2].route.meta.name).to.equal('Post');
     expect(router.stack[2].route.meta.description).to.equal('Post a comment');
-    expect(router.stack[2].route.meta.stacks)
-      .to.be.an('array', 'meta.stacks in not an array')
+    expect(router.stack[2].route.meta.tags)
+      .to.be.an('array', 'meta.tags in not an array')
       .to.eql(['Comments']);
   });
 });

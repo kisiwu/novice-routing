@@ -9,7 +9,7 @@ describe("Define routes and meta with 'route' method", () => {
     path: '/',
     description: 'homepage for example',
     name: 'homepage',
-    stacks: ['Index', 'Examples']
+    tags: ['Index', 'Examples']
   }).get(function one(req, res, next) {
     next();
   }, function two(req, res) {
@@ -25,8 +25,8 @@ describe("Define routes and meta with 'route' method", () => {
   it("should have registered meta", function() {
     expect(router.stack[0].route.meta.name).to.equal('homepage');
     expect(router.stack[0].route.meta.description).to.equal('homepage for example');
-    expect(router.stack[0].route.meta.stacks)
-      .to.be.an('array', 'meta.stacks in not an array')
+    expect(router.stack[0].route.meta.tags)
+      .to.be.an('array', 'meta.tags in not an array')
       .to.eql(['Index', 'Examples']);
   });
 });
