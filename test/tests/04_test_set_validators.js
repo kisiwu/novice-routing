@@ -2,7 +2,7 @@ var kaukau = require("kaukau");
 
 var router = require('../../index')();
 
-describe("Register middlewares using 'setMiddlewares'", () => {
+describe("Register middlewares using 'setValidators'", () => {
 
   router.setAuthHandlers(function authMiddleware(req, res, next){
     // auth user
@@ -12,7 +12,7 @@ describe("Register middlewares using 'setMiddlewares'", () => {
     next();
   });
 
-  router.setMiddlewares(function customMiddleware(req, res, next){
+  router.setValidators(function customValidator(req, res, next){
     next();
   });
 
@@ -38,7 +38,7 @@ describe("Register middlewares using 'setMiddlewares'", () => {
   });
 
 
-  it("should have added 'middleware' Layers", function() {
+  it("should have added 'validator' Layers", function() {
     expect(router.stack[0].route.meta.name).to.equal('Comments');
     expect(router.stack[0].route.stack)
       .to.be.an('array', 'route is missing stack of Layers')
@@ -47,12 +47,12 @@ describe("Register middlewares using 'setMiddlewares'", () => {
     expect(router.stack[0].route.stack[0].type)
       .to.be.an('undefined');
     expect(router.stack[0].route.stack[1].type)
-      .to.eql('middleware');
+      .to.eql('validator');
     expect(router.stack[0].route.stack[2].type)
       .to.be.an('undefined');
   });
 
-  it("should have added 'middleware' Layers after 'auth' Layers", function() {
+  it("should have added 'validator' Layers after 'auth' Layers", function() {
     expect(router.stack[1].route.meta.name).to.equal('Edit comment');
     expect(router.stack[1].route.stack)
       .to.be.an('array', 'route is missing stack of Layers')
@@ -66,12 +66,12 @@ describe("Register middlewares using 'setMiddlewares'", () => {
     expect(router.stack[1].route.stack[2].type)
       .to.eql('auth');
     expect(router.stack[1].route.stack[3].type)
-      .to.eql('middleware');
+      .to.eql('validator');
     expect(router.stack[1].route.stack[4].type)
       .to.be.an('undefined');
 
     expect(router.stack[1].route.stack[3].name)
-      .to.eql('customMiddleware');
+      .to.eql('customValidator');
 
     // console.log(router.stack[1].route.stack)
   });
