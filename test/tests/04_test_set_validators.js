@@ -23,7 +23,7 @@ describe("Register middlewares using 'setValidators'", () => {
     description: 'List of comment',
     tags: 'Comments'
   }, function list(req, res) {
-    res.json(req.routeMeta)
+    res.json(req.meta)
   });
 
   // define a route with 'auth' set to true
@@ -34,7 +34,7 @@ describe("Register middlewares using 'setValidators'", () => {
     auth: true,
     tags: 'Comments'
   }, function update(req, res) {
-    res.json(req.routeMeta)
+    res.json(req.meta)
   });
 
 

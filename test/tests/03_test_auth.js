@@ -23,7 +23,7 @@ describe("Define 'auth' routes and register middlewares using 'setAuthHandlers'"
     description: 'List of comment',
     tags: 'Comments'
   }, function list(req, res) {
-    res.json(req.routeMeta)
+    res.json(req.meta)
   });
 
   // define a route with 'auth' set to true
@@ -34,7 +34,7 @@ describe("Define 'auth' routes and register middlewares using 'setAuthHandlers'"
     auth: true,
     tags: 'Comments'
   }, function update(req, res) {
-    res.json(req.routeMeta)
+    res.json(req.meta)
   });
 
 

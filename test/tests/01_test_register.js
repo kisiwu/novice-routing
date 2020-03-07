@@ -14,7 +14,7 @@ describe("Define routes and meta", () => {
     name: 'about',
     tags: ['About']
   }, function aboutToDo(req, res) {
-    res.json(req.routeMeta)
+    res.json(req.meta)
   });
   // define the post route
   router.post({
@@ -23,7 +23,7 @@ describe("Define routes and meta", () => {
     description: 'Post a comment',
     tags: 'Comments'
   }, function postToDo(req, res) {
-    res.json(req.routeMeta)
+    res.json(req.meta)
   });
 
   it("should have registered 'all' route", function() {
