@@ -14,14 +14,14 @@ It keeps all the functionalities of Express router and extends them.
 
 ### Router
 
-A JSON object can be send as the `path` parameter when using route methods (`get`, `post`, ...) and methods `all` and `route`. That object must have the property `path` and can also have the following properties:
+A JSON object can be sent as the `path` parameter when using route methods (`get`, `post`, ...), `all` and `route`. That object must have the property `path` and can also have the following properties:
 
-- name: (string)
-- description: (string)
-- parameters: (object)
-- responses: (object)
-- tags: (string[])
-- auth: (boolean)
+- `name`: (string)
+- `description`: (string)
+- `parameters`: (object)
+- `responses`: (object)
+- `tags`: (string[])
+- `auth`: (boolean)
 
 Example:
 
@@ -48,14 +48,14 @@ router.get({
 
 ### Auth
 
-All of those properties sent  are not used by the library except from `path` (of course) and `auth`.
-When you need to verify the client's authentication the same way for the routes registered in a router, you can register middlewares with the method `setAuthHandlers`. Those middlewares will only be executed for routes with `auth` set to `true`. The method `setAuthHandlers` can be called before or after creating the routes.
+From those properties, only `path` and `auth` influence the routing.
+When you need to verify the client's authentication the same way for a router's route, you can set middlewares with the method `setAuthHandlers`. Those middlewares will only be executed for routes with `auth` set to `true`.
 
 
 ```js
 var router = require('@novice1/routing')()
 
-// register middleware(s) to handle authentication
+// set middleware(s) to handle authentication
 router.setAuthHandlers(function (req, res, next) {
   // do something
   next()
@@ -80,11 +80,12 @@ router.get({
 })
 ```
 
+`setAuthHandlers` can be called before or after creating the routes.
+
 ### Validators
 
-You can use `setValidators` to register middlewares that valid the client's request.
-Those middleware functions have access to `req.meta` so you could make use of the property `parameters` for example.
-`setValidators` can be called before or after creating the routes.
+You can use `setValidators` to set handlers that valid the client's request.
+Those middlewares have access to `req.meta` so you could make use of the property `parameters` for example.
 
 ```js
 var router = require('@novice1/routing')()
@@ -119,9 +120,11 @@ router.setValidators(function (req, res, next) {
 })
 ```
 
+`setValidators` can be called before or after creating the routes.
+
 ### Other methods
 
-As a router can be a middleware of another router (`use` method), you might want to keep different `auth` and `validator` handlers for some routers. For example a router might have its own `auth` handlers while being a middleware of a router also having `auth` handlers. For that purpose there are some methods:
+As a router can be a middleware of another router (`use` method), you might want to keep different `auth` and `validator` handlers for some routers. For example a router might have its own `auth` handlers while being `use`d by a router also having `auth` handlers. For that purpose there are some methods:
 
 - `setAuthHandlersIfNone`
 - `setValidatorsIfNone`
