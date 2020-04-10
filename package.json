@@ -24,6 +24,6 @@
     "extend": "^3.0.2"
   },
   "devDependencies": {
-    "kaukau": "0.0.65"
+    "kaukau": "0.0.70"
   }
 }
