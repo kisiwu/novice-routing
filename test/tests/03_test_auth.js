@@ -8,7 +8,7 @@ describe("Define 'auth' routes and register middlewares using 'setAuthHandlers'"
   // for all routes with:
   //   - 'auth' set to true
   //   - registered to this router
-  router.setAuthHandlers(function authMiddleware(req, res, next){
+  router.setAuthHandlersIfNone(function authMiddleware(req, res, next){
     // auth user
     next();
   },function authMiddleware2(req, res, next){
