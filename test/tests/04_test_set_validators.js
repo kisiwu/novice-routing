@@ -1,5 +1,3 @@
-var kaukau = require("kaukau");
-
 var router = require('../../index')();
 
 describe("Register middlewares using 'setValidators'", () => {
@@ -72,7 +70,5 @@ describe("Register middlewares using 'setValidators'", () => {
 
     expect(router.stack[1].route.stack[3].name)
       .to.eql('customValidator');
-
-    // console.log(router.stack[1].route.stack)
   });
 });

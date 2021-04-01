@@ -1,5 +1,3 @@
-var kaukau = require("kaukau");
-
 var router = require('../../index')();
 
 describe("Define 'auth' routes and register middlewares using 'setAuthHandlers'", () => {

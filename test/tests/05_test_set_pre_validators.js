@@ -1,5 +1,3 @@
-var kaukau = require("kaukau");
-
 var router = require('../../index')();
 
 describe("Register middlewares with meta 'preValidators'", () => {

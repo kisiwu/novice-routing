@@ -1,6 +1,3 @@
-var kaukau = require("kaukau");
-var Logger = kaukau.Logger;
-
 var router = require('../../index')();
 
 describe("Define routes and meta", () => {
