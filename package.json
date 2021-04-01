@@ -25,5 +25,8 @@
   },
   "devDependencies": {
     "kaukau": "^0.2.2"
+  },
+  "engines": {
+    "node": ">=10"
   }
 }
