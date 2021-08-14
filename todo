@@ -1,11 +1,13 @@
 - tests:
   - router methods:
-    - getMeta
+    - getMeta @done
 
 - d.ts:
-  - router methods:
-    - setAuthHandlers
-    - setAuthHandlersIfNone
-    - setValidators
-    - setValidatorsIfNone
+  - route @done
+  - router methods: @done
+    - setAuthHandlers @done
+    - setAuthHandlersIfNone @done
+    - setValidators @done
+    - setValidatorsIfNone @done
     - getMeta @done
+    - route @done

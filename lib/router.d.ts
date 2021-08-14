@@ -253,6 +253,151 @@ declare namespace routing {
         >(
         ...handlers: Array<RequestHandler<P, ResBody, ReqBody, ReqQuery, Locals, MetaResType>>
         ): T; 
+        <
+            P = core.ParamsDictionary,
+            ResBody = any,
+            ReqBody = any,
+            ReqQuery = ParsedQs,
+            Locals extends Record<string, any> = Record<string, any>,
+            MetaResType = any
+        >(
+            // tslint:disable-next-line no-unnecessary-generics (This generic is meant to be passed explicitly.)
+            ...handlers: Array<RequestHandlerParams<P, ResBody, ReqBody, ReqQuery, Locals, MetaResType>>
+        ): T;
+    }
+
+    //--- ROUTER HANDLER
+
+    export interface IRouterHandler<T, Route extends string = string, MetaResType = any> {
+        (...handlers: Array<RequestHandler<
+            core.RouteParameters<Route>,
+            any, any, ParsedQs, Record<string, any>, MetaResType
+            >>): T;
+        (...handlers: Array<RequestHandlerParams<
+            core.RouteParameters<Route>,
+            any, any, ParsedQs, Record<string, any>, MetaResType
+            >>): T;
+        <
+            P = core.RouteParameters<Route>,
+            ResBody = any,
+            ReqBody = any,
+            ReqQuery = ParsedQs,
+            Locals extends Record<string, any> = Record<string, any>
+            >(
+            // tslint:disable-next-line no-unnecessary-generics (This generic is meant to be passed explicitly.)
+            ...handlers: Array<RequestHandler<P, ResBody, ReqBody, ReqQuery, Locals, MetaResType>>
+        ): T;
+        <
+            P = core.RouteParameters<Route>,
+            ResBody = any,
+            ReqBody = any,
+            ReqQuery = ParsedQs,
+            Locals extends Record<string, any> = Record<string, any>
+            >(
+            // tslint:disable-next-line no-unnecessary-generics (This generic is meant to be passed explicitly.)
+            ...handlers: Array<RequestHandlerParams<P, ResBody, ReqBody, ReqQuery, Locals, MetaResType>>
+        ): T;
+        <
+            P = core.ParamsDictionary,
+            ResBody = any,
+            ReqBody = any,
+            ReqQuery = ParsedQs,
+            Locals extends Record<string, any> = Record<string, any>
+        >(
+            // tslint:disable-next-line no-unnecessary-generics (This generic is meant to be passed explicitly.)
+            ...handlers: Array<RequestHandler<P, ResBody, ReqBody, ReqQuery, Locals, MetaResType>>
+        ): T;
+        <
+            P = core.ParamsDictionary,
+            ResBody = any,
+            ReqBody = any,
+            ReqQuery = ParsedQs,
+            Locals extends Record<string, any> = Record<string, any>
+        >(
+            // tslint:disable-next-line no-unnecessary-generics (This generic is meant to be passed explicitly.)
+            ...handlers: Array<RequestHandlerParams<P, ResBody, ReqBody, ReqQuery, Locals, MetaResType>>
+        ): T;
+    }
+
+    //--- ROUTE
+
+    export interface IRoute<Route extends string = string, MetaResType = any> {
+        path: string;
+        stack: any;
+        all: IRouterHandler<this, Route, MetaResType>;
+        get: IRouterHandler<this, Route, MetaResType>;
+        post: IRouterHandler<this, Route, MetaResType>;
+        put: IRouterHandler<this, Route, MetaResType>;
+        delete: IRouterHandler<this, Route, MetaResType>;
+        patch: IRouterHandler<this, Route, MetaResType>;
+        options: IRouterHandler<this, Route, MetaResType>;
+        head: IRouterHandler<this, Route, MetaResType>;
+    
+        checkout: IRouterHandler<this, Route, MetaResType>;
+        copy: IRouterHandler<this, Route, MetaResType>;
+        lock: IRouterHandler<this, Route, MetaResType>;
+        merge: IRouterHandler<this, Route, MetaResType>;
+        mkactivity: IRouterHandler<this, Route, MetaResType>;
+        mkcol: IRouterHandler<this, Route, MetaResType>;
+        move: IRouterHandler<this, Route, MetaResType>;
+        'm-search': IRouterHandler<this, Route, MetaResType>;
+        notify: IRouterHandler<this, Route, MetaResType>;
+        purge: IRouterHandler<this, Route, MetaResType>;
+        report: IRouterHandler<this, Route, MetaResType>;
+        search: IRouterHandler<this, Route, MetaResType>;
+        subscribe: IRouterHandler<this, Route, MetaResType>;
+        trace: IRouterHandler<this, Route, MetaResType>;
+        unlock: IRouterHandler<this, Route, MetaResType>;
+        unsubscribe: IRouterHandler<this, Route, MetaResType>;
+    }
+
+    //--- ROUTE METHOD
+
+    export interface IRouteMethod {
+        <T extends string>(prefix: T): IRoute<T>;
+        (prefix: core.PathParams): IRoute;
+        <
+            Route extends string,
+            P = core.RouteParameters<Route>,
+            ResBody = any,
+            ReqBody = any,
+            ReqQuery = ParsedQs,
+            Locals extends Record<string, any> = Record<string, any>,
+            MetaResType = any
+            >(
+            prefix: RouteSettings<Route, P, ResBody, ReqBody, ReqQuery, Locals, MetaResType>
+        ): IRoute<Route, MetaResType>;
+        <
+            Path extends string,
+            P = core.RouteParameters<Path>,
+            ResBody = any,
+            ReqBody = any,
+            ReqQuery = ParsedQs,
+            Locals extends Record<string, any> = Record<string, any>,
+            MetaResType = any
+            >(
+            prefix: RouteSettingsParams<Path, P, ResBody, ReqBody, ReqQuery, Locals, MetaResType>
+        ): IRoute<Path, MetaResType>;
+        <
+            P = core.ParamsDictionary,
+            ResBody = any,
+            ReqBody = any,
+            ReqQuery = ParsedQs,
+            Locals extends Record<string, any> = Record<string, any>,
+            MetaResType = any
+            >(
+            prefix: RouteSettings<core.PathParams, P, ResBody, ReqBody, ReqQuery, Locals, MetaResType>
+        ): IRoute<string, MetaResType>;
+        <
+            P = core.ParamsDictionary,
+            ResBody = any,
+            ReqBody = any,
+            ReqQuery = ParsedQs,
+            Locals extends Record<string, any> = Record<string, any>,
+            MetaResType = any
+            >(
+            prefix: RouteSettingsParams<core.PathParams, P, ResBody, ReqBody, ReqQuery, Locals, MetaResType>
+        ): IRoute<string, MetaResType>;
     }
 
     //--- ROUTER
@@ -285,6 +430,8 @@ declare namespace routing {
         trace: IRouterMatcher<this>;
         unlock: IRouterMatcher<this>;
         unsubscribe: IRouterMatcher<this>;
+
+        route: IRouteMethod;
 
         //--- ROUTER DEV METHODS
         
