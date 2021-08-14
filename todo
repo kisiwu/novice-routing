@@ -4,6 +4,8 @@
 
 - d.ts:
   - router methods:
-    - getMeta
-    - auth
-    - validators
+    - setAuthHandlers
+    - setAuthHandlersIfNone
+    - setValidators
+    - setValidatorsIfNone
+    - getMeta @done

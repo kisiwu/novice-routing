@@ -23,7 +23,10 @@ describe("Define routes and meta", () => {
     res.json(req.meta)
   });
 
-  // console.log(router.getMeta());
+  /*console.log(router.getMeta().map( meta => {
+    meta.parameters
+    return meta;
+  }));*/
 
   it("should have registered 'all' route", function() {
     expect(router.stack[0].route.path).to.equal('/*');

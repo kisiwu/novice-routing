@@ -31,6 +31,11 @@ declare namespace routing {
         responses?: ResType;
     }
 
+    export interface RouteMeta extends BaseMeta<any> {
+        path: string | RegExp;
+        methods: Record<string, any>;
+    }
+
     export interface RequestMeta<ResType = any> extends BaseMeta<ResType> {
         method: string;
     }
@@ -132,7 +137,7 @@ declare namespace routing {
         > {
         <
             Route extends string,
-            P = core.ParamsDictionary,
+            P = core.RouteParameters<Route>,
             ResBody = any,
             ReqBody = any,
             ReqQuery = ParsedQs,
@@ -233,6 +238,23 @@ declare namespace routing {
         (path: core.PathParams, subApplication: core.Application): T;
     }
 
+    //--- ROUTER MIDDLEWARE EDITOR
+
+    export interface IRouterMiddlewareEditor<
+        T
+    > {
+        <
+        P = core.ParamsDictionary,
+        ResBody = any,
+        ReqBody = any,
+        ReqQuery = ParsedQs,
+        Locals extends Record<string, any> = Record<string, any>,
+        MetaResType = any
+        >(
+        ...handlers: Array<RequestHandler<P, ResBody, ReqBody, ReqQuery, Locals, MetaResType>>
+        ): T; 
+    }
+
     //--- ROUTER
 
     export interface IRouter extends e.IRouter {
@@ -263,6 +285,15 @@ declare namespace routing {
         trace: IRouterMatcher<this>;
         unlock: IRouterMatcher<this>;
         unsubscribe: IRouterMatcher<this>;
+
+        //--- ROUTER DEV METHODS
+        
+        getMeta(): RouteMeta[];
+
+        setAuthHandlers: IRouterMiddlewareEditor<this>;
+        setAuthHandlersIfNone: IRouterMiddlewareEditor<this>;
+        setValidators: IRouterMiddlewareEditor<this>;
+        setValidatorsIfNone: IRouterMiddlewareEditor<this>;
     }
 }
 
