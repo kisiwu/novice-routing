@@ -24,6 +24,7 @@
     "extend": "^3.0.2"
   },
   "devDependencies": {
-    "kaukau": "^0.2.2"
+    "@types/express": "^4.17.13",
+    "kaukau": "^1.0.0"
   }
 }

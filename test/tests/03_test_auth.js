@@ -1,4 +1,4 @@
-var router = require('../../index')();
+const router = require('../../index')();
 
 describe("Define 'auth' routes and register middlewares using 'setAuthHandlers'", () => {
 

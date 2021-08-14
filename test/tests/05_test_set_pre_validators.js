@@ -1,4 +1,4 @@
-var router = require('../../index')();
+const router = require('../../index')();
 
 describe("Register middlewares with meta 'preValidators'", () => {
 

@@ -1,0 +1,9 @@
+- tests:
+  - router methods:
+    - getMeta
+
+- d.ts:
+  - router methods:
+    - getMeta
+    - auth
+    - validators

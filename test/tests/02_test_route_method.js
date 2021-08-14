@@ -1,4 +1,4 @@
-var router = require('../../index')();
+const router = require('../../index')();
 
 describe("Define routes and meta with 'route' method", () => {
   // define the homepage

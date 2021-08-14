@@ -1,4 +1,4 @@
-var router = require('../../index')();
+const router = require('../../index')();
 
 describe("Define routes and meta", () => {
 
@@ -22,6 +22,8 @@ describe("Define routes and meta", () => {
   }, function postToDo(req, res) {
     res.json(req.meta)
   });
+
+  // console.log(router.getMeta());
 
   it("should have registered 'all' route", function() {
     expect(router.stack[0].route.path).to.equal('/*');
