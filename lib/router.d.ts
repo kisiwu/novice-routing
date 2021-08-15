@@ -1,19 +1,3 @@
-/*import {
-    IRouter,
-    RouterOptions
-} from 'express'
-*/
-/*
-import {
-    Application,
-    NextFunction,
-    ParamsDictionary,
-    PathParams,
-    Request as CoreRequest,
-    Response,
-    RouteParameters
-} from 'express-serve-static-core';
-*/
 import * as e from 'express';
 import * as core from 'express-serve-static-core';
 import { ParsedQs } from 'qs'
@@ -50,7 +34,7 @@ declare namespace routing {
         Locals extends Record<string, any> = Record<string, any>,
         MetaResType = any
         > extends core.Request<P, ResBody, ReqBody, ReqQuery, Locals> {
-        meta: RequestMeta<MetaResType>
+        meta: RequestMeta<MetaResType>;
     }
 
     export interface RequestHandler<

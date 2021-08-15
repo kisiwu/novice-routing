@@ -161,6 +161,24 @@ routerParent.setValidatorsIfNone(function (req, res, next) {
 })
 ```
 
+## Notes
+
+### Typescript
+
+This package extends `Request` interface from [express](https://www.npmjs.com/package/express) so you can always extend it more depending on your needs.
+
+Example:
+```ts
+declare global {
+  namespace Express {
+    interface Request {
+      // add a property
+      session?: Record<string, any>;
+    }
+  }
+}
+```
+
 ## References
 
 - [Express](https://expressjs.com/)
