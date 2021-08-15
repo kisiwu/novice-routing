@@ -19,7 +19,7 @@ A JSON object can be sent as the `path` parameter when using route methods (`get
 - `name`: (string)
 - `description`: (string)
 - `parameters`: (object)
-- `responses`: (object)
+- `responses`: (any)
 - `tags`: (string[])
 - `auth`: (boolean)
 - `preValidators`: (function[])
