@@ -1,4 +1,5 @@
 const router = require('../../index')();
+const { expect } = require('chai')
 
 describe("Define 'auth' routes and register middlewares using 'setAuthHandlers'", () => {
 

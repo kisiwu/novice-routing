@@ -1,6 +1,7 @@
 const router = require('../../index')();
 const midRouter = require('../../index')();
 const mainRouter = require('../../index')();
+const { expect } = require('chai')
 
 describe('Get meta from router', () => {
   router.all('/*', function allMiddleware(req, res, next) {

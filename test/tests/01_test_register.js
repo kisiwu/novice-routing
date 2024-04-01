@@ -1,4 +1,5 @@
 const router = require('../../index')();
+const { expect } = require('chai')
 
 describe("Define routes and meta", () => {
 
