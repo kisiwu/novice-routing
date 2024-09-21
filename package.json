@@ -1,7 +1,7 @@
 {
   "name": "@novice1/routing",
   "private": false,
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "",
   "main": "index.js",
   "keywords": [
@@ -21,13 +21,13 @@
   "license": "MIT",
   "dependencies": {
     "array-flatten": "^3.0.0",
-    "express": "^4.19.2",
+    "express": "^4.21.0",
     "extend": "^3.0.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
-    "chai": "^4.4.1",
-    "kaukau": "^3.1.1"
+    "chai": "^4.5.0",
+    "kaukau": "^4.0.0"
   },
   "engines": {
     "node": ">=14.0.0"
