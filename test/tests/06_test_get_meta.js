@@ -1,7 +1,9 @@
-const router = require('../../index')();
-const midRouter = require('../../index')();
-const mainRouter = require('../../index')();
-const { expect } = require('chai')
+import routing from '../../index.js'
+import { expect } from 'chai'
+
+const router = routing()
+const midRouter = routing()
+const mainRouter = routing()
 
 describe('Get meta from router', () => {
   router.all('/*splat', function allMiddleware(req, res, next) {

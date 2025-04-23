@@ -1,5 +1,7 @@
-const router = require('../../index')();
-const { expect } = require('chai')
+import routing from '../../index.js'
+import { expect } from 'chai'
+
+const router = routing()
 
 describe("Define routes and meta with 'route' method", () => {
   // define the homepage
