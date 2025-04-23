@@ -1,6 +1,6 @@
 # @novice1/routing
 
-A small extension of [Express routing](https://expressjs.com/en/guide/routing.html).
+A small extension of [Express (v5) routing](https://expressjs.com/en/guide/routing.html).
 
 ## Installation
 
