@@ -1,7 +1,5 @@
-import routing from '../../index.js'
-import { expect } from 'chai'
-
-const router = routing()
+const router = require('../../index')();
+const { expect } = require('chai')
 
 describe("Register middlewares with meta 'preValidators'", () => {
 
