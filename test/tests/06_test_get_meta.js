@@ -4,7 +4,7 @@ const mainRouter = require('../../index')();
 const { expect } = require('chai')
 
 describe('Get meta from router', () => {
-  router.all('/*', function allMiddleware(req, res, next) {
+  router.all('/*splat', function allMiddleware(req, res, next) {
     next();
   });
   // define the about route
@@ -31,13 +31,14 @@ describe('Get meta from router', () => {
     }
   );
 
+  /** Regexp are no longer supported since Express v5 so no need to worry about it anymore */
   // routes from here won't be found in meta
   // as meta only handles paths of type string or string[] 
-  midRouter.use(/\/regularExpress.*/, router);
+  //midRouter.use(/\/regularExpress.*/, router);
 
   midRouter.use(router);
 
-  mainRouter.use('/main', midRouter);
+  mainRouter.use(['/main'], midRouter);
 
   const meta = mainRouter.getMeta().map((meta) => {
     meta.parameters;
@@ -49,7 +50,7 @@ describe('Get meta from router', () => {
   });
 
   it('should have the right routes', function () {
-    expect(meta[0].path).to.equal('/main/*');
+    expect(meta[0].path).to.equal('/main/*splat');
     expect(meta[0].methods).to.deep.equal({_all: true});
 
     expect(meta[1].name).to.equal('about');

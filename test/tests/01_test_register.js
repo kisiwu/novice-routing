@@ -3,7 +3,7 @@ const { expect } = require('chai')
 
 describe("Define routes and meta", () => {
 
-  router.all('/*', function allMiddleware (req, res, next) {
+  router.all('/*splat', function allMiddleware (req, res, next) {
     next()
   });
   // define the about route
@@ -25,7 +25,7 @@ describe("Define routes and meta", () => {
   });
 
   it("should have registered 'all' route", function() {
-    expect(router.stack[0].route.path).to.equal('/*');
+    expect(router.stack[0].route.path).to.equal('/*splat');
   });
 
   it("should have registered 'get' route", function() {
