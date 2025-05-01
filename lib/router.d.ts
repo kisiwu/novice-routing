@@ -2,16 +2,28 @@ import * as e from 'express';
 import * as core from 'express-serve-static-core';
 import { ParsedQs } from 'qs'
 
+declare global {
+    namespace NoviceRouting {
+        // These open interfaces may be extended in an application-specific manner via declaration merging.
+        // See for example method-override.d.ts (https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/method-override/index.d.ts)
+        interface MetaParameters {}
+    }
+}
+
 declare namespace routing {
 
     //--- META
+
+    export interface MetaParameters extends NoviceRouting.MetaParameters {
+        [x: string]: any;
+    }
 
     export interface BaseMeta<ResType> {
         name?: string;
         description?: string;
         tags?: string | string[];
         auth?: boolean;
-        parameters?: Record<string, any>;
+        parameters?: MetaParameters;
         responses?: ResType;
     }
 
