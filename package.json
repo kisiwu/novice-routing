@@ -1,7 +1,7 @@
 {
   "name": "@novice1/routing",
   "private": false,
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "",
   "main": "index.js",
   "keywords": [
@@ -15,7 +15,7 @@
     "url": "https://github.com/kisiwu/novice-routing.git"
   },
   "scripts": {
-    "test": "kaukau --config test/config/testconfig.js"
+    "test": "npx kaukau --config test/config/testconfig.js"
   },
   "author": "demingongo",
   "license": "MIT",
@@ -27,8 +27,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "chai": "^4.5.0",
-    "kaukau": "^4.2.1"
+    "chai": "^4.5.0"
   },
   "engines": {
     "node": ">=16.0.0"
