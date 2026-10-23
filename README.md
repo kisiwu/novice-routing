@@ -5,7 +5,7 @@ A small extension of [Express (v5) routing](https://expressjs.com/en/guide/routi
 ## Installation
 
 ```bash
-$ npm install @novice1/routing
+npm install @novice1/routing
 ```
 
 ## Usage
@@ -27,9 +27,9 @@ A JSON object can be sent as the `path` parameter when using route methods (`get
 Example:
 
 ```js
-var router = require('@novice1/routing')()
+import routing from '@novice1/routing'
 
-router.get({
+routing().get({
   path: '/',
   name: 'Home',
   description: 'Home page',
@@ -54,7 +54,9 @@ When you need to verify the client's authentication the same way for a router's 
 
 
 ```js
-var router = require('@novice1/routing')()
+import routing from '@novice1/routing'
+
+const router = routing()
 
 // set middleware(s) to handle authentication
 router.setAuthHandlers(function (req, res, next) {
@@ -89,7 +91,9 @@ You can use `setValidators` to set handlers that valid the client's request.
 Those middlewares have access to `req.meta` so you could make use of the property `parameters` for example.
 
 ```js
-var router = require('@novice1/routing')()
+import routing from '@novice1/routing'
+
+const router = routing()
 
 router.get({
   name: 'Main app',
@@ -133,7 +137,7 @@ As a router can be a middleware of another router (`use` method), you might want
 Example:
 
 ```js
-var routing = require('@novice1/routing')
+import routing from '@novice1/routing'
 
 var routerChild = routing()
 
